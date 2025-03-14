@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  telegram-webdav-bot:
+    build: .
+    restart: unless-stopped
+    environment:
+      - TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+      - WEBDAV_HOSTNAME=https://your-webdav-server.com/remote.php/dav/files/username/
+      - WEBDAV_USERNAME=your_webdav_username
+      - WEBDAV_PASSWORD=your_webdav_password
+      - CHANNEL_MAPPINGS=-1001234567890:/carpeta1, -1009876543210:/carpeta2
+      - AUTHORIZED_USERS=123456789, 987654321
+    volumes:
+      - /tmp:/tmp
